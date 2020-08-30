@@ -1,0 +1,23 @@
+00:00:00.126531 VirtualBox GUI VM Selector Window 6.1.10 r138449 linux.amd64 (Jun  8 2020 08:33:44) release log
+00:00:00.126533 Log opened 2020-06-28T21:54:33.818304000Z
+00:00:00.126534 Build Type: release
+00:00:00.126535 OS Product: Linux
+00:00:00.126536 OS Release: 5.7.5-arch1-1
+00:00:00.126537 OS Version: #1 SMP PREEMPT Mon, 22 Jun 2020 08:10:02 +0000
+00:00:00.126553 DMI Product Name: Precision M4800
+00:00:00.126559 DMI Product Version: 00
+00:00:00.126562 Firmware type: UEFI
+00:00:00.126701 Secure Boot: Disabled
+00:00:00.126729 Host RAM: 15950MB (15.5GB) total, 14688MB (14.3GB) available
+00:00:00.126731 Executable: /usr/lib/virtualbox/VirtualBox
+00:00:00.126732 Process ID: 25984
+00:00:00.126732 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.126754 Qt version: 5.15.0
+00:00:00.143169 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.472719 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 9x9 x 949x1044
+00:00:00.495136 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:19.958287 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:22.630435 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:23.488123 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:24:50.540890 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:24:50.557559 GUI: UIMediumEnumerator: Medium-enumeration finished!

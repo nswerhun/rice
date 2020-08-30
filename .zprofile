@@ -1,0 +1,2 @@
+setleds -D +num
+startx 

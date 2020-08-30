@@ -1,0 +1,35 @@
+#!/bin/bash
+                   
+source /home/noah/scripts/dependencies/colors
+
+meminfo=$(cat /proc/meminfo)
+total=$(echo $meminfo | awk '{print $2}')
+totalg=$(printf %.2f "$((10**3 * $total/1048576))e-3")
+free=$(echo $meminfo | awk '{print $5}')
+freeg=$(printf %.2f "$((10**3 * $free/1048576))e-3")
+used=$(($total-$free))
+usedg=$(printf %.2f "$((10**3 * $used/1048576))e-3")
+
+if [ "$usedg" -ge "5.00" ]
+then 
+    color=0
+elif [ "$usedg" -ge "1.00" ]
+then 
+    color=1
+else
+    color=3
+fi
+
+
+# Long
+echo "MEM: ${usedg}GB/${totalg}GB ${freeg}GB"
+# Short
+echo "MEM: ${usedg}GB/${totalg}GB ${freeg}GB"
+# Color
+case $color in
+    0) echo $red;;
+    1) echo $yellow;;
+    *) echo $white;;
+esac
+# Background
+echo $black

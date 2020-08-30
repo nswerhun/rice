@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Basic info
+bat0=/sys/class/power_supply/BAT0
+capacity=$(cat $bat0/capacity)
+stat=$(cat $bat0/status)
+
+# Redifine stat to be usable
+case $stat in
+    "Discharging") stat="DIS";;
+    "Unknown") stat="UNK";;
+    "Charging") stat="CHG";;
+    "Full") stat="FLL";;
+esac
+
+case $stat in
+    "DIS") icon="🔋 ";;
+    "CHG") icon="🔌 ";;
+    *) icon="";;
+esac
+
+echo "$icon$stat $capacity%"

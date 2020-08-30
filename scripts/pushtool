@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# Quit Function
+quit() {
+    echo ":: Exiting..."
+    exit
+}
+
+# Prompts
+pull() {
+    read -p ":: Pull from remote? [y/N]: " pull
+    case $pull in
+        "y") git pull;;
+        "q") quit;;
+        *) echo ":: Continuing without pulling...";;
+    esac
+    echo
+}
+
+add() {
+    read -p ":: Add? [./u/A/d]: " add
+    case $add in
+        ".") git add.; echo ":: New files and modifications tracked and staged.";;
+        "u") git add -u; echo ":: Modifications and deletions staged.";;
+        "d") echo ":: Files to add: "; read -r files; git add $files;;
+        "q") quit;;
+        *) git add -A; echo ":: All changes tracked and staged.";;
+    esac
+    echo
+}
+
+commit() {
+    read -p ":: Commit? [Y/n]: " commit
+    case $commit in
+        "n") echo ":: Continuing without committing...";;
+        "q") quit;;
+        *) read -p ":: Commit message: " message;
+           echo;
+           echo "⇓ GIT OUTPUT ⇓";
+           git commit -m "$message"
+           echo "--------------";;
+    esac
+    echo
+}
+
+push() {
+    read -p ":: Push to remote? [Y/n]: " push
+    case $push in
+        "n") echo ":: Exiting without pushing..."; exit;;
+        "q") quit;;
+        *) echo "⇓ GIT OUTPUT ⇓";
+           git push -u origin master;
+           echo "--------------";;
+    esac
+    echo
+}
+
+# Output
+arg="$1"
+case $arg in
+    "-f"|"--fast") git add -A; echo ":: All changes tracked and staged."; echo;
+                   case $2 in
+                       "") 
+                           read -p ":: Commit message: " message; echo;
+                           echo "⇓ GIT OUTPUT ⇓";
+                           git commit -m "$message"
+                           echo "--------------"; echo;
+                           echo ":: Pushing to remote master."; echo
+                           echo "⇓ GIT OUTPUT ⇓";
+                           git push -u origin master;
+                           echo "--------------"; echo;
+                           quit;;
+                       *) message="$2";
+                          echo "⇓ GIT OUTPUT ⇓";
+                          git commit -m "$message"
+                          echo "--------------"; echo;
+                          echo ":: Pushing to remote master."; echo
+                          echo "⇓ GIT OUTPUT ⇓";
+                          git push -u origin master;
+                          echo "--------------"; echo;
+                          quit;;
+                   esac;;
+               "") pull; add; commit; push; quit;;
+               *) echo ":: Invalid argument. Exiting...";;
+esac

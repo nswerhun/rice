@@ -1,0 +1,19 @@
+#!/bin/bash
+
+rice="git --git-dir=$HOME/dcs/rice --work-tree=$HOME"
+
+quit() {
+    echo ":: Exiting..."
+    exit
+}
+
+$rice add -A; echo ":: All changes tracked and staged."; echo
+read -p ":: Commit message: " message; echo;
+echo "⇓ GIT OUTPUT ⇓";
+$rice commit -m "$message"
+echo "--------------"; echo;
+echo ":: Pushing to remote master."; echo
+echo "⇓ GIT OUTPUT ⇓";
+$rice push -u origin master;
+echo "--------------"; echo;
+quit

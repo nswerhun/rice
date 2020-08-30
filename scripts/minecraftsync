@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo ":: Cleaning directories..."
+rm -r ~/.minecraft/mods/*
+rm -r ~/.minecraft/config/*
+rm -r ~/.minecraft/scripts/*
+echo
+
+echo ":: Copying mods..."
+cp -vr ~/dls/minecraft-things/mods/* ~/.minecraft/mods/.
+echo
+
+echo ":: Copying configs..."
+cp -vr ~/dls/minecraft-things/config/* ~/.minecraft/config/.
+echo
+
+echo ":: Copying scripts..."
+cp -vr ~/dls/minecraft-things/scripts/* ~/.minecraft/scripts/.
+echo
+
+echo ":: Folder sync complete. Mods, configs, and scripts updated. Exiting..."

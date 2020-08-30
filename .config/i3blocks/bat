@@ -1,0 +1,53 @@
+#!/bin/bash
+
+source /home/noah/scripts/dependencies/colors
+
+# Basic info
+bat0=/sys/class/power_supply/BAT0
+capacity=$(cat $bat0/capacity)
+stat=$(cat $bat0/status)
+
+# Redifine stat to be usable
+case $stat in
+    "Discharging") stat="DIS";;
+    "Unknown") stat="UNK";;
+    "Charging") stat="CHG";;
+    "Full") stat="FLL";;
+esac
+
+# Set color variable
+if [ "$stat" = "CHG" ] || [ "$stat" = "FLL" ]
+then 
+    color=0
+elif [ "$capacity" -le "10" ]
+then 
+    color=1
+elif [ "$capacity" -le "25" ]
+then 
+    color=2
+elif [ "$capacity" -le "50" ]
+then 
+    color=3
+else
+    color=4
+fi
+
+out="$stat $capacity%" # Actual prompt
+
+# Long
+echo "BATT: $out"
+# Short
+echo "BATT: $out"
+# Color
+case $color in
+    0) echo $green;;
+    1) echo $warnf;;
+    2) echo $red;;
+    3) echo $yellow;;
+    4) echo $white;;
+esac
+# Background
+case $color in
+    1) echo $red;;
+    *) echo $black;;
+esac

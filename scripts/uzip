@@ -1,0 +1,5 @@
+#!/bin/bash
+
+folder_name=$(sed 's/.zip//g' <<< $1)
+
+7z x $1 -o$folder_name

@@ -1,0 +1,97 @@
+00:00:00.000124 main     VirtualBox XPCOM Server 6.1.10 r138449 linux.amd64 (Jun  8 2020 08:33:44) release log
+00:00:00.000126 main     Log opened 2020-06-28T21:49:42.425019000Z
+00:00:00.000126 main     Build Type: release
+00:00:00.000128 main     OS Product: Linux
+00:00:00.000128 main     OS Release: 5.7.5-arch1-1
+00:00:00.000129 main     OS Version: #1 SMP PREEMPT Mon, 22 Jun 2020 08:10:02 +0000
+00:00:00.000144 main     DMI Product Name: Precision M4800
+00:00:00.000148 main     DMI Product Version: 00
+00:00:00.000151 main     Firmware type: UEFI
+00:00:00.000422 main     Secure Boot: Disabled
+00:00:00.000461 main     Host RAM: 15950MB (15.5GB) total, 14727MB (14.3GB) available
+00:00:00.000463 main     Executable: /usr/lib/virtualbox/VBoxSVC
+00:00:00.000463 main     Process ID: 24754
+00:00:00.000464 main     Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.001580 main     IPC socket path: /tmp/.vbox-noah-ipc/ipcd
+00:00:00.106492 nspr-2   VirtualBox: object creation starts
+00:00:00.106557 nspr-2   Home directory: '/home/noah/.config/VirtualBox'
+00:00:00.106697 nspr-2   Loading settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:00.114143 nspr-2   NetIfAdpCtlOut: VBoxNetAdpCtl: Error while retrieving link speed for wlan0: VBoxNetAdpCtl: ioctl failed: Operation not supported
+00:00:00.114687 nspr-2   HostDnsMonitor: initializing
+00:00:00.115002 nspr-2   NAT: resolv.conf: nameserver 192.168.1.1
+00:00:00.115019 nspr-2   HostDnsMonitor: updating information
+00:00:00.115033 nspr-2   HostDnsMonitor: old information
+00:00:00.115037 nspr-2     no server entries
+00:00:00.115040 nspr-2     no domain set
+00:00:00.115042 nspr-2     no search string entries
+00:00:00.115045 nspr-2   HostDnsMonitor: new information
+00:00:00.115048 nspr-2     server 1: 192.168.1.1
+00:00:00.115051 nspr-2     no domain set
+00:00:00.115054 nspr-2     no search string entries
+00:00:00.117321 nspr-2   Failed to open "/dev/vboxdrvu", errno=2, rc=VERR_VM_DRIVER_NOT_INSTALLED
+00:00:00.117504 nspr-2   VD: VDInit finished with VINF_SUCCESS
+00:00:00.117587 nspr-2   ERROR [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={027bc463-929c-40e8-bf16-fea557cd8e7e} aComponent={SystemPropertiesWrap} aText={Cannot determine default Guest Additions ISO location. Most likely they are not available}, preserve=false aResultDetail=0
+00:00:00.121900 nspr-2   Loading settings file "/media/virtualbox/archlinux-2020.06.01-x86_64/archlinux-2020.06.01-x86_64.vbox" with version "1.16-linux"
+00:00:00.122758 nspr-2   Loading settings file "/media/virtualbox/openSUSE-Tumbleweed-DVD-x86_64-Current/openSUSE-Tumbleweed-DVD-x86_64-Current.vbox" with version "1.16-linux"
+00:00:00.123293 nspr-2   VirtualBox: object created
+00:00:00.520797 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:00:00.556988 nspr-3   Failed to open "/dev/vboxdrvu", errno=2, rc=VERR_VM_DRIVER_NOT_INSTALLED
+00:00:00.703375 nspr-2   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:00:00.704059 nspr-2   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:00:02.395494 nspr-2   Launched VM: 4026537392 pid: 24795 (0x60db) frontend: GUI/Qt name: openSUSE-Tumbleweed-DVD-x86_64-Current
+00:00:02.427972 nspr-4   Failed to open "/dev/vboxdrvu", errno=2, rc=VERR_VM_DRIVER_NOT_INSTALLED
+00:00:02.446044 nspr-4   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:00:02.446675 nspr-4   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:00:02.896496 Watcher  ERROR [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={85632c68-b5bb-4316-a900-5eb28d3413df} aComponent={MachineWrap} aText={The virtual machine 'openSUSE-Tumbleweed-DVD-x86_64-Current' has terminated unexpectedly during startup with exit code 1 (0x1)}, preserve=false aResultDetail=0
+00:00:03.444863 nspr-3   Failed to open "/dev/vboxdrvu", errno=2, rc=VERR_VM_DRIVER_NOT_INSTALLED
+00:00:03.462374 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:00:03.462927 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:49.719406 nspr-3   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:04:49.739096 nspr-3   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:04:51.765650 nspr-2   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:51.950139 nspr-2   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:51.950840 nspr-2   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.085496 nspr-4   Launched VM: 4026536240 pid: 26033 (0x65b1) frontend: GUI/Qt name: openSUSE-Tumbleweed-DVD-x86_64-Current
+00:04:53.138414 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.139085 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.298099 nspr-6   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.298797 nspr-6   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.795303 nspr-6   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.795916 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.796107 nspr-3   ERROR [COM]: aRC=VBOX_E_OBJECT_NOT_FOUND (0x80bb0001) aIID={70401eef-c8e9-466b-9660-45cb3e9979e4} aComponent={ExtPackManagerWrap} aText={No extension pack by the name 'Oracle VM VirtualBox Extension Pack' was found}, preserve=false aResultDetail=0
+00:04:53.832751 nspr-6   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.833488 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:04:53.855343 nspr-3   ERROR [COM]: aRC=VBOX_E_IPRT_ERROR (0x80bb0005) aIID={85632c68-b5bb-4316-a900-5eb28d3413df} aComponent={SessionMachine} aText={Saved screenshot data is not available (VERR_NOT_SUPPORTED)}, preserve=false aResultDetail=-37
+00:04:53.884466 nspr-6   NetIfAdpCtlOut: VBoxNetAdpCtl: Error while retrieving link speed for wlan0: VBoxNetAdpCtl: ioctl failed: Operation not supported
+00:05:11.223043 nspr-6   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:05:11.231938 nspr-3   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:05:11.243711 nspr-5   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:05:11.244696 nspr-5   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:05:13.889024 nspr-5   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:05:13.905750 nspr-5   Saving settings file "/media/virtualbox/openSUSE-Tumbleweed-DVD-x86_64-Current/openSUSE-Tumbleweed-DVD-x86_64-Current.vbox" with version "1.16-linux"
+00:05:14.785043 nspr-6   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:05:14.812800 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:05:14.813542 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:05:15.488676 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:05:15.489455 nspr-4   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:05:46.505186 nspr-7   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:05:47.834872 nspr-2   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:19:30.269953 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:19:30.307714 nspr-2   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:19:30.308395 nspr-4   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:29:41.752122 nspr-4   Saving settings file "/media/virtualbox/openSUSE-Tumbleweed-DVD-x86_64-Current/openSUSE-Tumbleweed-DVD-x86_64-Current.vbox" with version "1.16-linux"
+00:29:41.769244 nspr-5   Saving settings file "/media/virtualbox/openSUSE-Tumbleweed-DVD-x86_64-Current/openSUSE-Tumbleweed-DVD-x86_64-Current.vbox" with version "1.16-linux"
+00:29:41.791136 nspr-2   Saving settings file "/media/virtualbox/openSUSE-Tumbleweed-DVD-x86_64-Current/openSUSE-Tumbleweed-DVD-x86_64-Current.vbox" with version "1.16-linux"
+00:29:41.836619 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:29:41.837257 nspr-7   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={16ced992-5fdc-4aba-aff5-6a39bbd7c38b} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=true  aResultDetail=0
+00:30:45.687635 nspr-2   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:30:45.706588 nspr-6   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:30:45.714680 nspr-5   Saving settings file "/home/noah/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:30:51.232126 main     VirtualBox: object deletion starts
+00:30:51.232161 main     ERROR [COM]: aRC=VBOX_E_OBJECT_IN_USE (0x80bb000c) aIID={ad47ad09-787b-44ab-b343-a082a3f2dfb1} aComponent={MediumWrap} aText={Medium '/media/virtualbox/archlinux-2020.06.01-x86_64/archlinux-2020.06.01-x86_64.vdi' cannot be closed because it is still attached to 1 virtual machines}, preserve=false aResultDetail=0
+00:30:51.232271 main     ERROR [COM]: aRC=VBOX_E_OBJECT_IN_USE (0x80bb000c) aIID={ad47ad09-787b-44ab-b343-a082a3f2dfb1} aComponent={MediumWrap} aText={Medium '/media/virtualbox/openSUSE-Tumbleweed-DVD-x86_64-Current/openSUSE-Tumbleweed-DVD-x86_64-Current.vdi' cannot be closed because it is still attached to 1 virtual machines}, preserve=false aResultDetail=0
+00:30:51.232511 main     HostDnsMonitor: shutting down ...
+00:30:51.244529 main     HostDnsMonitor: shut down
+00:30:51.271577 Watcher  ERROR [COM]: aRC=E_ACCESSDENIED (0x80070005) aIID={d0a0163f-e254-4e5b-a1f2-011cf991c38d} aComponent={VirtualBoxWrap} aText={The object is not ready}, preserve=false aResultDetail=0
+00:30:56.244639 main     {00007f1ff40151c0} HostPowerServiceLinux::~HostPowerServiceLinux: RTThreadWait() for 5000 ms failed with VERR_TIMEOUT
+00:30:56.245045 main     VirtualBox: object deleted

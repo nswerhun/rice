@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sink=$(pacmd stat | grep "Default sink" | awk '{print $4}')
+
+# info=$(pacmd list-sinks | sed -n "/$sink/,/index/p")
+info=$(pacmd list-sinks)
+
+# mutestate=$(grep "volume" | awk '{print $5}')
+
+printf %b $info

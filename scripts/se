@@ -1,0 +1,23 @@
+#!/bin/bash
+
+main() {
+    find /home/noah/scripts -type f | sed 's/\/home\/noah\/scripts\///g'| fzf --height=15 | xargs -I {} nvim /home/noah/scripts/{}
+}
+
+new() {
+    path="/home/noah/scripts/$1"
+    echo -e "#!/bin/bash\n\n<++>" > $path
+    chmod +x $path
+    nvim $path
+}
+
+invalid() {
+    echo ":: Invalid argument"
+    return 1
+}
+
+case $1 in
+     "new") new "$2";;
+     "") main;;
+     *) invalid;;
+esac

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+date +%A\ %d\ %B\ ANNO\ DOMINI\ %Y\ %R:%S

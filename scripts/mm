@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find /home/noah/msc | sed 's/\/home\/noah\/msc\///g'| fzf --height=15 -m | xargs -I {} echo /home/noah/msc/{} | xargs mpv
