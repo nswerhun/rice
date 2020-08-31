@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rice="git --git-dir=$HOME/dcs/rice --work-tree=$HOME"
+rice="git --git-dir=$HOME/rice.git --work-tree=$HOME"
 
 quit() {
     echo ":: Exiting..."
