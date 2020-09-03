@@ -1,18 +1,20 @@
 #!/bin/bash
 
 usage() {
-    echo -e "Usage: split-track [input_file] [data_file]\nSplit track: uses ffmpeg and a user-made csv file to cut a large audio file into many smaller ones.\n\nRules for data file:\n  -  Must be of csv format.\n  -  Delimiter is set to \`,'.\n  -  No fields may contain commas.\n  -  Fields may not be surrounded by quotes.\n  -  The first field must give the start time, in the original file, for the new clip. Must be in HH:MM:SS format.\n  -  The second field must contain the full filename of the clip to be created.\n  -  The third field must contain the end time, in the original file, for the new clip. Must be in HH:MM:SS format."
+    echo -e "Usage: split-track [input_file] [data_file]\nSplit track: uses ffmpeg and a user-made csv file to cut a large audio file into many smaller ones.\n\nRules for data file:\n  -  Must be of csv format.\n  -  Delimiter is set to \`,' by default.\n  -  No fields may contain the delimiter (obviously).\n  -  Fields may not be surrounded by quotes.\n  -  The first field must give the start time, in the original file, for the new clip. Must be in HH:MM:SS format.\n  -  The second field must contain the full filename of the clip to be created.\n  -  The third field must contain the end time, in the original file, for the new clip. Must be in HH:MM:SS format."
     exit
 }
 
-# Check if the user needs help
-if [ "$1" = "--help" ]; then usage; fi
+# Check arguments
+[ -z $1 ] && echo "Argument(s) required. Try --help" && exit 1
+[[ "$1" == "--help" ]] && usage
 
 # Initialize file number and lines in term
+IFS=,
 file_number=1
 
 # Main loop
-while IFS=, read -r starttime name endtime; do
+while read -r starttime name endtime; do
     # Convert times into seconds
     starttime_seconds=$(awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }' <<< $starttime)
     endtime_seconds=$(awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }' <<< $endtime)
@@ -29,7 +31,7 @@ while IFS=, read -r starttime name endtime; do
     # Display progress
     tput cup $(tput lines) 0;
     total="$(bc <<< "scale=2;($file_number-1)/$(wc -l < $2)*100")%"
-    echo -en "\r--- FILE #$file_number --- NAME $safename --- TOTAL $total ---"
+    echo -en "\r--- FILE #$file_number/$(wc -l < $2) --- NAME $safename --- TOTAL $total ---"
 
     # Reset cursor
     tput cup 0 0
