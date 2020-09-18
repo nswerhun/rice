@@ -1,7 +1,7 @@
 #!/bin/bash
 
 main() {
-    find $HOME/scripts -type f | sed "s|$HOME/scripts/||g"| fzf --height=15 | xargs -I {} $EDITOR $HOME/scripts/{}
+    find $HOME/scripts -type f | sed "s|$HOME/scripts/||g"| fzf --reverse --height=15 | xargs -I {} $EDITOR $HOME/scripts/{}
 }
 
 invalid() {

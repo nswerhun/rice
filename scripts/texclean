@@ -1,0 +1,5 @@
+#!/bin/bash
+
+name=$(sed "s/.tex$//g" <<< "$1")
+
+rm $name.aux $name.log

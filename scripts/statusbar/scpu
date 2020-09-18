@@ -1,9 +1,5 @@
 #!/bin/bash
 
-tz1="/sys/class/thermal/thermal_zone1"
-temp="$(cat $tz1/temp)"
-temp="${temp:0:2}°C"
-load="$(cat /proc/loadavg)"
-load="${load:0:4}"
+temp=$(sensors | awk '/Package/ { print $4 } ' | tr -d '+')
 
-echo "CPU: $temp $load"
+echo "CPU: $temp"

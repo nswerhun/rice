@@ -17,14 +17,13 @@ set linebreak
 set nostartofline
 set laststatus=2
 set noshowmode
-set listchars=eol:¬,space:␣
+set listchars=eol:¬,space:␣,trail:‗
 set formatoptions-=cro
-set ignorecase
-set smartcase
+set ignorecase smartcase
 
 let &packpath = &runtimepath
 
-""" ~~~ Plugins with plug.vim ~~~ 
+""" ~~~ Plugins with plug.vim ~~~
 call plug#begin('~/.config/nvim/plugins.d')
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -39,7 +38,7 @@ Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
-""" ~~~ Gruvbox Settings ~~~
+""" ~~~ Theme Settings ~~~
 let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark
@@ -64,45 +63,56 @@ let g:airline_symbols.maxlinenr = ' '
 let g:airline_extensions = []
 let g:airline_extensions = ['branch', 'wordcount']
 
-""" ~~~ Hotkeys ~~~ <F5> and <F6> are reserved for compilation
-map <F1> <esc>/<++><CR>"_c4l
+""" ~~~ Hotkeys ~~~ <F5> is reserved for LaTeX compilation
+map  <F1> <esc>/<++><CR>"_c4l
 imap <F1> <esc>/<++><CR>"_c4l
-map <F2> :setlocal spell! spelllang=en_us<CR>
-map <F3> zz
-map <F4> <esc>:w<CR>
-map <F7> <esc>:setlocal cursorcolumn!<CR>:setlocal cursorline!<CR>
-map <F8> <esc>:setlocal list!<CR>
-map <F9> <esc>:nohl<CR>
+map  <F2> :setlocal spell! spelllang=en_us<CR>
+map  <F3> zz
+map  <F4> <esc>:w<CR>
+imap <F4> <esc>:w<CR>a
+map  <F7> <esc>:setlocal cursorcolumn!<CR>:setlocal cursorline!<CR>
+map  <F8> <esc>:setlocal list!<CR>
+map  <F9> <esc>:nohl<CR>
 imap <F9> <esc>:nohl<CR>a
 
+""" ~~~ Split navigation ~~~
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+""" ~~~ Convenient autocommands
+" ~~~ Set cursorline for insert mode
+autocmd InsertEnter,InsertLeave * setlocal cursorline!
+" ~~~ Autocompile certain files
+autocmd BufWritePost /home/noah/.config/dwm/config.h :!sudo make -C ~/.config/dwm clean install
+autocmd BufWritePost /home/noah/.config/dmenu/config.h :!sudo make -C ~/.config/dmenu clean install
+autocmd BufWritePost /home/noah/.config/st/config.h :!sudo make -C ~/.config/st clean install
+autocmd BufWritePost /home/noah/.config/dwmblocks/blocks.h :!sudo make -C ~/.config/dwmblocks clean install && killall dwmblocks; dwmblocks & disown
+
 """ ~~~ Bracket autocompletion for certain filetypes ~~~
-autocmd Filetype c,cpp,tex,python inoremap [     []<++><esc>T[i
-autocmd Filetype c,cpp,tex,python inoremap (     ()<++><esc>T(i
-autocmd Filetype c,cpp,tex,python inoremap "     ""<esc>T"i
-autocmd Filetype c,cpp,tex,python inoremap '     ''<esc>T'i
-autocmd Filetype c,cpp,python     inoremap {     {}<++><esc>T{i
-autocmd Filetype c,cpp,tex,python inoremap {<CR> {<esc>o}<esc>ko
+autocmd Filetype c,cpp,python inoremap [     []<++><esc>T[i
+autocmd Filetype c,cpp,python inoremap (     ()<++><esc>T(i
+autocmd Filetype c,cpp,python inoremap "     ""<esc>T"i
+autocmd Filetype c,cpp,python inoremap '     ''<esc>T'i
+autocmd Filetype c,cpp,python inoremap {     {}<++><esc>T{i
+autocmd Filetype c,cpp,python inoremap {<CR> {<esc>o}<esc>ko
 
 """ ~~~ LaTeX stuffs ~~~
 " ~~~ Compilation
-autocmd Filetype tex map      <F5> <esc>:w<CR>:! pdflatex %<CR><CR>:! zathura $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
-autocmd Filetype tex map      <F6> <esc>:w<CR>:! pdflatex %<CR><CR>
-autocmd Filetype tex map!     <F5> <esc>:w<CR>:! pdflatex %<CR><CR>:! zathura $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>a
-autocmd Filetype tex map!     <F6> <esc>:w<CR>:! pdflatex %<CR><CR>a
-" ~~~ Text formatting
-autocmd Filetype tex nnoremap ;i i\textbf{<esc>ea}<esc>
+autocmd BufWritePost *.tex :silent !pdflatex % && texclean %
+autocmd Filetype tex map      <F5> <esc>:w<CR>:!pdflatex %<CR><CR>:!zathura $(sed 's/tex$/pdf/' <<< %) & disown<CR><CR>
+" ~~~ Syntax macros
 autocmd Filetype tex inoremap ;b \textbf{}<++><esc>T{i
-autocmd Filetype tex nnoremap ;i i\textit{<esc>ea}<esc>
 autocmd Filetype tex inoremap ;i \textit{}<++><esc>T{i
-autocmd Filetype tex nnoremap ;e i\emph{<esc>ea}<esc>
 autocmd Filetype tex inoremap ;e \emph{}<++><esc>T{i
-autocmd Filetype tex nnoremap ;s i\textsc{<esc>ea}<esc>
 autocmd Filetype tex inoremap ;s \textsc{}<++><esc>T{i
-autocmd Filetype tex nnoremap ;q i``<esc>ea''<esc>
+autocmd Filetype tex inoremap ;f \textsf{}<++><esc>T{i
+autocmd Filetype tex inoremap ;t \texttt{}<++><esc>T{i
 autocmd Filetype tex inoremap ;q ``''<++><esc>T`i
-" ~~~ Document syntax
-autocmd Filetype tex imap     `e \begin{}<CR><++><CR>\end{}<esc>\\\2<up>2<right>\\\i
+autocmd Filetype tex imap     `b \begin{}<CR><++><CR>\end{}<esc>\\\2<up>2<right>\\\i
 autocmd Filetype tex inoremap `s \section{}<CR><++><esc>k0f{a
 autocmd Filetype tex inoremap `u \subsection{}<CR><++><esc>k0f{a
-autocmd Filetype tex inoremap `b \subsubsection{}<CR><++><esc>k0f{a
-autocmd Filetype tex inoremap `p \item<space>
+autocmd Filetype tex inoremap `e \subsubsection{}<CR><++><esc>k0f{a
+autocmd Filetype tex inoremap `p \usepackage{}<CR><++><esc>k0f{a
+autocmd Filetype tex inoremap `i \item<space>
