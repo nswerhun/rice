@@ -1,2 +1,0 @@
-setleds -D +num
-startx 

@@ -85,10 +85,12 @@ map <C-l> <C-w>l
 " ~~~ Set cursorline for insert mode
 autocmd InsertEnter,InsertLeave * setlocal cursorline!
 " ~~~ Autocompile certain files
-autocmd BufWritePost /home/noah/.config/dwm/config.h :!sudo make -C ~/.config/dwm clean install
-autocmd BufWritePost /home/noah/.config/dmenu/config.h :!sudo make -C ~/.config/dmenu clean install
-autocmd BufWritePost /home/noah/.config/st/config.h :!sudo make -C ~/.config/st clean install
-autocmd BufWritePost /home/noah/.config/dwmblocks/blocks.h :!sudo make -C ~/.config/dwmblocks clean install && killall dwmblocks; dwmblocks & disown
+autocmd BufWritePost $HOME/.config/dwm/config.h :!sudo make -C ~/.config/dwm clean install
+autocmd BufWritePost $HOME/.config/dmenu/config.h :!sudo make -C ~/.config/dmenu clean install
+autocmd BufWritePost $HOME/.config/st/config.h :!sudo make -C ~/.config/st clean install
+autocmd BufWritePost $HOME/.config/dwmblocks/blocks.h :!sudo make -C ~/.config/dwmblocks clean install && killall dwmblocks; dwmblocks & disown
+" ~~~ Set filetypes for certain files
+autocmd VimEnter $ZDOTDIR/.zaliases :setf zsh
 
 """ ~~~ Bracket autocompletion for certain filetypes ~~~
 autocmd Filetype c,cpp,python inoremap [     []<++><esc>T[i
