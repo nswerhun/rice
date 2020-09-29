@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for arg in "$@"; do
+    extract_dir=$(sed "s/\..*//g" <<< "$arg")
+    case $arg in
+        *.zip|*.cab|*.7z|*.rpm|*.deb) 7z x "$arg" -o"$extract_dir";;
+        *.tar.gz) tar -xf "$arg";;
+        *.rar) unrar x "$arg";;
+    esac
+done
