@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "DSK: $(df | awk -v OFS='»' '{ print $6,$5 }' | grep -w -e "/" -e "/home" | tr '\n' ' ' | xargs)"

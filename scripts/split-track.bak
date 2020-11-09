@@ -1,0 +1,62 @@
+#!/bin/bash
+
+usage() {
+    cat << EOF
+Usage: split-track [OPTIONS] [-if=input_file] [-df=data_file]
+Split track: uses ffmpeg and a user-made csv file to cut a large audio file into many smaller ones.
+
+Rules for data file:
+  -  Must be of csv format.
+  -  Delimiter is set to ',' by default.
+  -  No fields may contain the delimiter (obviously).
+  -  Fields may not be surrounded by quotes.
+  -  The first field must give the start time, in the original file, for the new clip. Must be in HH:MM:SS format.
+  -  The second field must contain the full filename of the clip to be created.
+  -  The third field must contain the end time, in the original file, for the new clip. Must be in HH:MM:SS format.
+NOTE: The data file may also be read from stdin. This is meant for quick, single-file operations where making a whole spreadsheet might be cumbersome.
+EOF
+    exit 0
+}
+
+# Check arguments
+[ -z $1 ] && echo "Argument(s) required. Try --help" && exit 1
+[ "$1" = "--help" ] && usage
+
+# Initialize file number and lines in term
+IFS=,
+file_number=1
+
+[ -z $2 ] && input=/dev/stdin || input=$2
+
+# Main loop
+while read -r starttime name endtime; do
+    # Convert times into seconds
+    starttime_seconds=$(awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }' <<< $starttime)
+    endtime_seconds=$(awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }' <<< $endtime)
+
+    # Get duration in secs
+    duration=$(($endtime_seconds-$starttime_seconds))
+
+    # Ensure the filename is safe
+    safename=$(sed 's/ /-/g;s/[A-Z]/\L&/g;s/://g' <<< $name)
+
+    # Clear screen
+    tput clear
+
+    # Display progress
+    tput cup $(tput lines) 0;
+    total="$(bc <<< "scale=2;($file_number-1)/$(wc -l < $2)*100")%"
+    [ $input = $2 ] &&
+        echo -en "\r--- FILE #$file_number/$(wc -l < $2) --- NAME $safename --- TOTAL $total ---" ||
+        echo -en "\r--- READING FROM STDIN--- NAME $safename ---"
+
+    # Reset cursor
+    tput cup 0 0
+
+    # Cut the file
+    ffmpeg -ss $starttime_seconds -i "$1" -t $duration -codec libopus "$safename" < /dev/null
+    # echo ffmpeg -ss $starttime_seconds -i "$1" -t $duration -codec libopus "$safename" < /dev/null
+
+    # Increment file number
+    file_number=$((file_number+1))
+done < "$input"
