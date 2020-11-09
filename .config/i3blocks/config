@@ -1,5 +1,5 @@
 [vol]
-command=/home/noah/.config/i3blocks/vol
+command=/home/noah/.config/i3blocks/newvol
 interval=1
 
 [mem]
@@ -9,10 +9,6 @@ interval=5
 [cpu]
 command=/home/noah/.config/i3blocks/cpu
 interval=5
-
-[bat]
-command=/home/noah/.config/i3blocks/bat
-interval=10
 
 [date]
 command=/home/noah/.config/i3blocks/date

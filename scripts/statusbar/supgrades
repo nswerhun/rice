@@ -3,14 +3,4 @@
 sudo pacman -Sy > /dev/null
 amount=$(pacman -Qu | wc -l)
 
-if [ "$amount" = "0" ]; then
-    UPGBLE=""
-else
-    UPGBLE="⏫ $amount upgr."
-fi
-
-if [ "$UPGBLE" = "" ]; then
-    echo -n "$UPGBLE"
-else
-    echo "$UPGBLE"
-fi
+[ $amount != 0 ] && echo "⏫ $amount upgr."

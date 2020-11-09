@@ -2,34 +2,36 @@
                    
 source /home/noah/scripts/dependencies/colors
 
-mutestatus=$(pactl list sinks | sed -n 9p | awk '{print $2}')
+mutestatus=$(pactl list sinks | awk '/alsa_output\.pci\-0000_06_00\.0\.analog\-stereo$/ {print}')
 vol=$(pactl list sinks | sed -n 10p | awk '{print $5}')
 dev=$(pactl list sinks | sed -n 53p | awk '{print $5}')
 
-if [ "$mutestatus" = "yes" ]
-then 
-    color=0
-    mutestatus="MUTED "
-else
-    color=1
-    mutestatus=""
-fi
+echo $mutestatus
 
-if [ "$dev" = "not" ]
-then 
-    dev="SPKS"
-else
-    dev="AUX"
-fi
+# if [ "$mutestatus" = "yes" ]
+# then 
+#     color=0
+#     mutestatus="MUTED "
+# else
+#     color=1
+#     mutestatus=""
+# fi
 
-# Long
-echo "VOL: $dev $mutestatus$vol"
-# Short
-echo "VOL: $dev $mutestatus$vol"
-# Color
-case $color in
-    0) echo $red;;
-    *) echo $green;;
-esac
-# Background
-# echo
+# if [ "$dev" = "not" ]
+# then 
+#     dev="SPKS"
+# else
+#     dev="AUX"
+# fi
+
+# # Long
+# echo "VOL: $dev $mutestatus$vol"
+# # Short
+# echo "VOL: $dev $mutestatus$vol"
+# # Color
+# case $color in
+#     0) echo $red;;
+#     *) echo $green;;
+# esac
+# # Background
+# # echo

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 icon=$(curl -s -w '\n' wttr.in/\?format="%c+")
-
 line=$(curl -s -w '\n' wttr.in/\?format="%C+%t+%o")
-
 betterline=$(echo $line | sed 's/+//g')
 
 echo "$icon$betterline"

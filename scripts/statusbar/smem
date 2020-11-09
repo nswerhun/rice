@@ -1,26 +1,6 @@
 #!/bin/bash
 
-# Get information in mebibytes
-total=$(free -m | awk '/Mem/ {print $2}')
 used=$(free -m | awk '/Mem/ {print $3}')
-avail=$(free -m | awk '/Mem/ {print $7}')
+[ "$used" -ge "1024" ] && used="$(bc <<< "scale=2; $used/1024")Gi" || used="${used}Mi"
 
-# Make unit display dynamic and more readable
-total=$(bc <<< "scale=2; $total/1024")G
-
-if [ "$used" -ge "1024" ]
-then
-    used=$(bc <<< "scale=2; $used/1024")G
-else
-    used=${used}M
-fi
-
-if [ "$avail" -ge "1024" ]
-then
-    avail=$(bc <<< "scale=2; $avail/1024")G
-else
-    avail=${avail}M
-fi
-# ---
-
-echo "MEM: $used/$total $avail"
+echo "MEM: $used"

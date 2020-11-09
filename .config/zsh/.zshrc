@@ -1,5 +1,5 @@
 # Show neofetch for every new terminal, for every user except root
-[ $USER != "root" ] && neofetch --colors 4 4 0 4 4 15 --ascii_colors 32 26 --disable theme icons host uptime resolution || print -P "%B%F{1}YOU ARE ROOT. BE CAREFUL.%f%b" 
+[ $UID = 0 ] && print -P "%B%F{1}YOU ARE ROOT. BE CAREFUL.%f%b" || /home/noah/scripts/uftch
 
 # Plugins
 source $ZDOTDIR/.zplugins/git-prompt.sh
@@ -28,7 +28,7 @@ PROMPT='%B%F{4}[%f %F{1}%n%f%b %F{7}%~%f %B%F{4}]%f%b %B%F{4}%(!.#.$)%f%b '
 RPROMPT='%B%F{4}$(__git_ps1 "[ %s ]") ${MODE_INDICATOR_PROMPT} [ %(?.✓.✗ %?) ]%f%b'
 
 # Root prompt
-[ $USER = "root" ] &&
+[ $UID = 0 ] &&
     PROMPT='%B%F{1}[ %UROOT%u %/ ] %(!.#.$)%f%b ' &&
     RPROMPT='%B%F{1}$(__git_ps1 "[ %s ]") ${MODE_INDICATOR_PROMPT} [ %(?.✓.✗ %?) ]%f%b'
 

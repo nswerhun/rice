@@ -17,7 +17,7 @@ new() {
     $EDITOR $path
 }
 
-[ -z $EDITOR ] && echo "Please set EDITOR environment variable."
+[ -z $EDITOR ] && echo "Please set EDITOR environment variable." && exit 1
 
 case $1 in
      "new") new "$2";;

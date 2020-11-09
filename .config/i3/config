@@ -189,7 +189,8 @@ bar {
 exec --no-startup-id picom 
 
 # Start pulseeffects for decent audio
+exec --no-startup-id pactl set-default-sink alsa_output.pci-0000_06_00.0.analog-stereo 
 exec --no-startup-id pulseeffects --gapplication-service
 
 # Set background
-exec --no-startup-id feh --bg-fill /home/noah/pics/old-town.png
+exec --no-startup-id feh --bg-fill /home/noah/pics/building.jpg

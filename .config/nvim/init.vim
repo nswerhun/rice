@@ -20,6 +20,7 @@ set noshowmode
 set listchars=eol:¬,space:␣,trail:‗
 set formatoptions-=cro
 set ignorecase smartcase
+set splitright
 
 let &packpath = &runtimepath
 
@@ -88,9 +89,12 @@ autocmd InsertEnter,InsertLeave * setlocal cursorline!
 autocmd BufWritePost $HOME/.config/dwm/config.h :!sudo make -C ~/.config/dwm clean install
 autocmd BufWritePost $HOME/.config/dmenu/config.h :!sudo make -C ~/.config/dmenu clean install
 autocmd BufWritePost $HOME/.config/st/config.h :!sudo make -C ~/.config/st clean install
-autocmd BufWritePost $HOME/.config/dwmblocks/blocks.h :!sudo make -C ~/.config/dwmblocks clean install && killall dwmblocks; dwmblocks & disown
+autocmd BufWritePost $HOME/.config/dwmblocks/blocks.h :!sudo make -C ~/.config/dwmblocks clean install && killall dwmblocks && dwmblocks & disown
 " ~~~ Set filetypes for certain files
 autocmd VimEnter $ZDOTDIR/.zaliases :setf zsh
+autocmd VimEnter $HOME/.config/mutt/personal :setf muttrc
+autocmd VimEnter $HOME/.config/mutt/school :setf muttrc
+
 
 """ ~~~ Bracket autocompletion for certain filetypes ~~~
 autocmd Filetype c,cpp,python inoremap [     []<++><esc>T[i
@@ -118,3 +122,4 @@ autocmd Filetype tex inoremap `u \subsection{}<CR><++><esc>k0f{a
 autocmd Filetype tex inoremap `e \subsubsection{}<CR><++><esc>k0f{a
 autocmd Filetype tex inoremap `p \usepackage{}<CR><++><esc>k0f{a
 autocmd Filetype tex inoremap `i \item<space>
+autocmd Filetype tex inoremap `; \begin{equation}<CR>\end{equation}<esc>ko
