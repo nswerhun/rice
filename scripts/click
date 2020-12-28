@@ -1,0 +1,45 @@
+#!/bin/sh
+
+usage() {
+    cat << EOF
+click [QUANTITY] [BUTTON] [OPTIONS]
+
+QUANTITY: The amount of times to click.
+BUTTON: \`left\`, \`right\`, or \`middle\`.
+OPTIONS:
+    -d=secs
+        Sets the delay before clicking starts to secs. Default is 3.
+    -s=secs
+        Sets the amount of time to sleep between clicks to secs. Default is 0.
+EOF
+}
+
+[ "$1" = "--help" ] && usage && exit 0
+
+case $2 in
+    "left") button=1;;
+    "middle") button=2;;
+    "right") button=3;;
+esac
+
+for arg in "$@"; do
+    case "$arg" in
+        -d=*) delay="${arg#*=}";;
+        -s=*) sleeptime="${arg#*=}";;
+    esac
+done
+
+echo "Waiting ${delay:-3}s..."
+sleep "${delay:-3}"
+echo -e "\nButton $button"
+
+i=1
+while [ "$i" -le "$1" ]; do
+    xdotool click "$button"
+    percent=$(bc <<< "scale=4; ($i/$1)*100")
+    printf "\rClick: %4d/$1 | %3.2f%%" "$i" "$percent"
+    sleep "${sleeptime:-0}"
+    i="$(( $i + 1 ))"
+done
+
+echo -e "\n\nDone"

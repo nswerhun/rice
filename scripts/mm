@@ -1,3 +1,5 @@
 #!/bin/bash
 
-find $HOME/msc -name '.*' -prune -o -print | sed "s|$HOME/msc/||g" | fzf --height=15 -m | xargs -r -I {} echo $HOME/msc/{} | xargs -r mpv
+musicdir=$(xdg-user-dir MUSIC || echo "$HOME/Music") 
+
+find $musicdir -name '.*' -prune -o -print | sed "s|$musicdir/||g" | fzf --height=15 -m | xargs -r -I {} echo "$musicdir/{}" | xargs -r mpv

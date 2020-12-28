@@ -24,4 +24,7 @@ alias ytaudio='youtube-dl -f bestaudio'
 alias ytvideo='youtube-dl -f bestvideo'
 alias m='neomutt'
 alias dirsize='du -sh'
+alias monitor-cam='ffmpeg -f x11grab -r 30 -s 1920x1080 -i :0+0,0 -pix_fmt yuv420p -f v4l2 /dev/video50'
+alias gg='git add -A && git commit && echo && git push'
 # alias passmenu="passmenu -i -l 5 -fn 'Roboto Mono:pixelsize=12'"12
+# alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"

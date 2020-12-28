@@ -1,7 +1,9 @@
 #!/bin/bash
 
+booksdir="$HOME/med/bks"
+
 main() {
-    find $HOME/bks -name '.*' -prune -o -print | sed "s|$HOME/bks/||g" | fzf --height=15 | xargs -I {} $READER $HOME/bks/{}
+    find $booksdir -name '.*' -prune -o -print | sed "s|$booksdir/||g" | fzf --height=15 | xargs -I {} $READER $booksdir/{}
 }
 
 invalid() {
@@ -12,18 +14,18 @@ invalid() {
 get() {
     [ -z "$1" ] && invalid
     [ -z "$2" ] && invalid
-    wget "$1" -O "$HOME/bks/$2"
+    wget "$1" -O "$booksdir/$2"
 }
 
 lst() {
-    ls --color=always "$HOME/bks"
+    ls --color=always "$booksdir"
 }
 
 [ -z "$READER" ] && echo "Please set EDITOR environment variable."
 
 case $1 in
-     "get") get "$2" "$3";;
-     "ls") lst;;
-     "") main;;
-     *) invalid;;
+    "get") get "$2" "$3";;
+    "ls") lst;;
+    "") main;;
+    *) invalid;;
 esac

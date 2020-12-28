@@ -28,3 +28,5 @@ pics/
 .pki/
 .mputils/
 rice.git
+.config/zsh/.zplugins/zsh-syntax-highlighting
+.config/zsh/.zplugins/zsh-vim-mode

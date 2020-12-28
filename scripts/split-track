@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 usage() {
     cat << EOF
@@ -77,7 +77,7 @@ while read -r starttime name endtime; do
         total="$(bc <<< "scale=2;($file_number-1)/$(wc -l < $data_file)*100")%" &&
         [ "$data_file" != /dev/stdin ] &&
             echo -en "\r--- FILE #$file_number/$(wc -l < $data_file) --- NAME $safename --- TOTAL $total ---" ||
-            echo -en "\r--- READING FROM STDIN--- NAME $safename ---" &&
+            echo -en "\r--- READING FROM STDIN --- NAME $safename ---" &&
         tput cup 0 0
 
     # Cut the file

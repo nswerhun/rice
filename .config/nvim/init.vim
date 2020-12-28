@@ -6,6 +6,7 @@
 """ ╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 
 syntax on
+filetype plugin on
 
 set number relativenumber
 set incsearch
@@ -18,9 +19,9 @@ set nostartofline
 set laststatus=2
 set noshowmode
 set listchars=eol:¬,space:␣,trail:‗
-set formatoptions-=cro
 set ignorecase smartcase
 set splitright
+set textwidth=80
 
 let &packpath = &runtimepath
 
@@ -36,6 +37,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-fugitive'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -47,6 +50,11 @@ highlight normal ctermbg=none
 
 """ ~~~ Set multi-cursor for instant escape ~~~
 let g:VM_quit_after_leaving_insert_mode = 1
+
+""" Emmet config
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_leader_key=';'
 
 """ ~~~ Airline things ~~~
 " ~~~ Make symbols work
@@ -76,6 +84,9 @@ map  <F8> <esc>:setlocal list!<CR>
 map  <F9> <esc>:nohl<CR>
 imap <F9> <esc>:nohl<CR>a
 
+map  <S-k> i<CR><esc>kA<CR>
+imap <C-k> <CR><esc>kA<CR>
+
 """ ~~~ Split navigation ~~~
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -94,15 +105,20 @@ autocmd BufWritePost $HOME/.config/dwmblocks/blocks.h :!sudo make -C ~/.config/d
 autocmd VimEnter $ZDOTDIR/.zaliases :setf zsh
 autocmd VimEnter $HOME/.config/mutt/personal :setf muttrc
 autocmd VimEnter $HOME/.config/mutt/school :setf muttrc
-
+autocmd VimEnter /etc/logid.cfg :setf logid
 
 """ ~~~ Bracket autocompletion for certain filetypes ~~~
-autocmd Filetype c,cpp,python inoremap [     []<++><esc>T[i
-autocmd Filetype c,cpp,python inoremap (     ()<++><esc>T(i
-autocmd Filetype c,cpp,python inoremap "     ""<esc>T"i
-autocmd Filetype c,cpp,python inoremap '     ''<esc>T'i
-autocmd Filetype c,cpp,python inoremap {     {}<++><esc>T{i
-autocmd Filetype c,cpp,python inoremap {<CR> {<esc>o}<esc>ko
+autocmd Filetype c,cpp,python,java inoremap [     []<++><esc>T[i
+autocmd Filetype c,cpp,python,java inoremap (     ()<++><esc>T(i
+autocmd Filetype c,cpp,python,java inoremap "     ""<esc>T"i
+autocmd Filetype c,cpp,python,java inoremap '     ''<esc>T'i
+autocmd Filetype c,cpp,python,java inoremap {     {}<++><esc>T{i
+autocmd Filetype c,cpp,python,java inoremap {<CR> {<esc>o}<esc>ko
+
+""" C preprocessor directives
+autocmd Filetype c inoremap <F6>r #include <.h><esc>F.i
+autocmd Filetype c inoremap <F6>t #include ".h"<esc>F.i
+autocmd Filetype c inoremap <F6>d #define<space>
 
 """ ~~~ LaTeX stuffs ~~~
 " ~~~ Compilation

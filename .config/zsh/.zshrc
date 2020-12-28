@@ -1,11 +1,20 @@
-# Show neofetch for every new terminal, for every user except root
-[ $UID = 0 ] && print -P "%B%F{1}YOU ARE ROOT. BE CAREFUL.%f%b" || /home/noah/scripts/uftch
+# Enable custom command completion
+autoload -Uz compinit
+compinit
+
+function greeting() {
+    quote=$(/usr/local/bin/motivate --no-colors)
+    /home/noah/scripts/pfetch
+    echo -e "\e[1m\e[94m$(head -n 1 <<< $quote)\e[0m\n\e[37m$(tail -n 1 <<< $quote)"
+}
+# Show pfetch for every new terminal, for every user except root
+[ $UID = 0 ] && print -P "%B%F{1}YOU ARE ROOT. BE CAREFUL.%f%b" || greeting
 
 # Plugins
 source $ZDOTDIR/.zplugins/git-prompt.sh
 source $ZDOTDIR/.zplugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 source $ZDOTDIR/.zplugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source $ZDOTDIR/.zplugins/pass.zsh-completion
+source $ZDOTDIR/.zplugins/zsh-colored-man-pages/colored-man-pages.plugin.zsh
 
 # Remove all escape bindings for instant NORMAL mode
 bindkey -r -p '^[^['

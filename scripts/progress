@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sp='/-\|'
+printf ' '
+while true; do 
+    printf '\b%.1s' "$sp"; sleep .3; sp=${sp#?}${sp%???}
+done

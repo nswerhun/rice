@@ -1,0 +1,41 @@
+#!/bin/sh
+
+usage() {
+    cat << EOF
+Usage: inst-proton [ -v ] [ FILENAME ] [ ... ]
+
+     -v    Verbose mode. Shows you each file as its being extracted.
+ --help    Display this help message
+
+FILENAME should be a tar archive containing a proton version.
+You can list as many files as you want; all will be installed
+EOF
+exit 0;
+}
+
+[ "$#" = 0 ] && echo "Arguements required" && usage
+[ "$1" = "--help" ] && usage
+
+
+if [ ! -d "${HOME}/.local/share/Steam/compatibilitytools.d/" ]; then
+    printf "compatibilitytools.d directory not found. Create it? [y/N] "
+    read create
+    [ "$create" = "y" ] || [ "$create" = "Y" ] && 
+        mkdir -p "${HOME}/.local/share/Steam/compatibilitytools.d/" ||
+        echo "Directory not created. Proton will NOT be installed."
+fi
+
+for arg in "$@"; do
+    if [ "$(printf "%s" "$arg" | cut -c1)" = "-" ]; then 
+        case "$(printf "%s" "$arg" | cut -c2)" in
+            "v") tarargs="xvf"; [ "$#" = 1 ] && echo "Arguements required" && usage;;
+        esac
+        continue
+    fi
+    if [ "$(expr $arg : '.*\.tar.*$')" = 0 ]; then
+        echo "$arg not a tar archive"
+        continue
+    fi
+    echo "Installing $(printf "%s" $arg | sed 's/\.tar.*$//')"
+    tar -"${tarargs:-xf}" "$arg" -C "${HOME}/.local/share/Steam/compatibilitytools.d/" && echo "Done"
+done 

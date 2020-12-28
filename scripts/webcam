@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# TODO
+
+pids="$(ps aux | grep droidcam-cli | head -n -1)"
+
+[ -z "$1" ] && echo "Argument required." && exit 1
+[ "$#" != 1 ] && echo "Invalid argument." && exit 1
+
+case "$1" in
+    "start") 
+        [ -z "$pids" ] && ( 
+            nohup droidcam-cli adb "${DROIDCAM_PORT:-4747}" < /dev/null > /dev/null & 
+        ) || ( 
+            echo "Already running." && exit 1 
+        ) ;;
+        
+    "start-here") 
+        [ -z "$pids" ] && droidcam-cli adb "${DROIDCAM_PORT:-4747}" || ( echo "Already running." && exit 1 );;
+
+    "view") 
+        [ -n "$pids" ] && mpv av://v4l2:/dev/video0 --profile=low-latency --untimed --no-osc || ( echo "Not running." && exit 1 );;
+
+    "status") 
+        echo "${pids:-"Not running."}";;
+
+    "stop") 
+        [ -n "$pids" ] && ( 
+            mpv_id="$(ps -aux | grep "webcam" -m1 -A1 | tail -n 1 | grep "mpv" | tr -s ' ' | cut -d ' ' -f 2)"
+            [ -n "$mpv_id" ] && ( 
+                kill -9 "$mpv_id"
+            )
+            pkill droidcam-cli
+        ) || ( 
+            echo "Not running." && exit 1 
+        ) ;;
+
+         *) 
+             echo "Invalid argument." && exit 1;;
+esac
